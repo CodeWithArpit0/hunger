@@ -1,4 +1,4 @@
-import PizzaCard from "./pizzaCard";
+import PizzaCard from "./pizzacard";
 import styles from "../styles/PizzaList.module.css";
 
 export default function PizzaList({ pizzaList }) {
