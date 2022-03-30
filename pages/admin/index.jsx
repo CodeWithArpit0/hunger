@@ -1,6 +1,6 @@
 import { useState } from "react";
 import styles from "../../styles/Admin.module.css";
-import Image from "next/Image";
+import Image from "next/image";
 import axios from "axios";
 import ProductDetails from "../../components/productdetails";
 
