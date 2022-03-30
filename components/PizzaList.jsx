@@ -1,18 +1,20 @@
-import PizzaCard from "./PizzaCard";
-import styles from "../styles/PizzaList.module.css"
+import PizzaCard from "./pizzaCard";
+import styles from "../styles/PizzaList.module.css";
 
 export default function PizzaList({ pizzaList }) {
-    return (
-        <div className={styles.container}>
-            <h1 className={styles.title}>THE BEST PIZZA IN TOWN</h1>
-            <p className={styles.desc}>
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut blandit arcu in pretium molestie. Interdum et malesuada fames acme. Lorem ipsum dolor sit amet, consetetur adipiscing elit.
-            </p>
-            <div className={styles.wrapper}>
-                {pizzaList.map((pizza) => (
-                    <PizzaCard key={pizza._id} pizza={pizza} />
-                ))}
-            </div>
-        </div>
-    );
+  return (
+    <div className={styles.container}>
+      <h1 className={styles.title}>THE BEST PIZZA IN TOWN</h1>
+      <p className={styles.desc}>
+        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut blandit arcu
+        in pretium molestie. Interdum et malesuada fames acme. Lorem ipsum dolor
+        sit amet, consetetur adipiscing elit.
+      </p>
+      <div className={styles.wrapper}>
+        {pizzaList.map((pizza) => (
+          <PizzaCard key={pizza._id} pizza={pizza} />
+        ))}
+      </div>
+    </div>
+  );
 }
