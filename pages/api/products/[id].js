@@ -1,5 +1,5 @@
 import dbConnect from "../../../util/mongo";
-import Product from "../../../models/product";
+import product from "../../../models/product";
 
 export default async function handler(req, res) {
   const {
@@ -13,7 +13,7 @@ export default async function handler(req, res) {
 
   if (method === "GET") {
     try {
-      const items = await Product.findById(id);
+      const items = await product.findById(id);
       res.status(200).json(items);
     } catch (err) {
       res.status(500).json(err);
@@ -24,7 +24,7 @@ export default async function handler(req, res) {
       return res.status(401).json("Not Authenticated!");
     }
     try {
-      const item = await Product.findByIdAndUpdate(id, req.body, { new: true });
+      const item = await product.findByIdAndUpdate(id, req.body, { new: true });
       res.status(201).json(item);
     } catch (err) {
       console.log(err);
@@ -33,7 +33,7 @@ export default async function handler(req, res) {
   }
   if (method === "DELETE") {
     try {
-      await Product.findByIdAndDelete(id);
+      await product.findByIdAndDelete(id);
       res.status(200).json("The product has been deleted!");
     } catch (err) {
       console.log(err);

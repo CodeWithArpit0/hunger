@@ -1,5 +1,5 @@
 import dbConnect from "../../util/mongo";
-import User from "../../models/user";
+import user from "../../models/user";
 
 export default async function handler(req, res) {
   const { method } = req;
@@ -21,14 +21,14 @@ export default async function handler(req, res) {
     const { cartTotal } = req.body;
     try {
       if (product !== undefined) {
-        const item = await User.findByIdAndUpdate(_id, {
+        const item = await user.findByIdAndUpdate(_id, {
           $push: { cart: product },
           $set: { cartTotal: cartTotal },
         });
         res.status(201).json(item);
       } else {
         const { cart } = req.body;
-        const item = await User.findByIdAndUpdate(_id, {
+        const item = await user.findByIdAndUpdate(_id, {
           $set: { cart: cart, cartTotal: cartTotal },
         });
         res.status(201).json(item);

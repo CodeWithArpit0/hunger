@@ -1,6 +1,6 @@
 import bcrypt from "bcrypt";
 import dbConnect from "../../util/mongo";
-import User from "../../models/user";
+import user from "../../models/user";
 import cookie from "cookie";
 
 export default async function handler(req, res) {
@@ -11,7 +11,7 @@ export default async function handler(req, res) {
 
   if (method === "POST") {
     try {
-      const UserData = await User.findOne({ email });
+      const UserData = await user.findOne({ email });
       if (UserData) {
         const isPasswordCorrect = await bcrypt.compare(
           password,
