@@ -13,7 +13,9 @@ export default function Admin({ orders, products }) {
 
   const deleteProduct = async (productID) => {
     try {
-      await axios.delete("http://localhost:3000/api/products/" + productID);
+      await axios.delete(
+        "https://hunger-alpha.vercel.app/api/products/" + productID
+      );
       setPizzaList(pizzaList.filter((pizza) => pizza._id !== productID));
     } catch (err) {
       console.log(err);
@@ -25,7 +27,7 @@ export default function Admin({ orders, products }) {
     const currentStatus = item.status;
     try {
       const res = await axios.put(
-        "http://localhost:3000/api/orders/" + orderID,
+        "https://hunger-alpha.vercel.app/api/orders/" + orderID,
         { status: currentStatus + 1 }
       );
       setOrderList([
@@ -159,8 +161,12 @@ export const getServerSideProps = async (ctx) => {
       },
     };
   }
-  const productRes = await axios.get("http://localhost:3000/api/products");
-  const orderRes = await axios.get("http://localhost:3000/api/orders");
+  const productRes = await axios.get(
+    "https://hunger-alpha.vercel.app/api/products"
+  );
+  const orderRes = await axios.get(
+    "https://hunger-alpha.vercel.app/api/orders"
+  );
 
   return {
     props: {

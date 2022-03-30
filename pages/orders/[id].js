@@ -12,7 +12,7 @@ export default function Order({ order }) {
   useEffect(() => {
     async function updateCart() {
       try {
-        await axios.put("http://localhost:3000/api/cart", {
+        await axios.put("https://hunger-alpha.vercel.app/api/cart", {
           _id: currentUser._id,
           cart: [],
           cartTotal: 0,

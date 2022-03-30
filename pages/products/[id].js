@@ -46,7 +46,7 @@ export default function Product({ pizza }) {
         const total = price * quantity;
         const cartTotal = cart.total + total;
 
-        await axios.put("http://localhost:3000/api/cart", {
+        await axios.put("https://hunger-alpha.vercel.app/api/cart", {
           product: {
             ...pizza,
             price,

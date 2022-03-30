@@ -35,7 +35,9 @@ export default function Navbar() {
 
   async function handleLogout() {
     try {
-      const res = await axios.post("http://localhost:3000/api/logout");
+      const res = await axios.post(
+        "https://hunger-alpha.vercel.app/api/logout"
+      );
       if (res.status === 200) {
         dispatch(reset());
         Router.push("/login");

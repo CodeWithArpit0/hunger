@@ -72,7 +72,10 @@ export default function Signup() {
     } else {
       setIsModelOpen(true);
       try {
-        const res = await axios.post("http://localhost:3000/api/signup", User);
+        const res = await axios.post(
+          "https://hunger-alpha.vercel.app/api/signup",
+          User
+        );
         if (res.status === 201) {
           setIsModelOpen(false);
           Router.push("/login");
