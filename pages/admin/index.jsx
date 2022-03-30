@@ -2,7 +2,7 @@ import { useState } from "react";
 import styles from "../../styles/Admin.module.css";
 import Image from "next/Image";
 import axios from "axios";
-import ProductDetails from "../../components/ProductDetails";
+import ProductDetails from "../../components/productDetails";
 
 export default function Admin({ orders, products }) {
   const [pizzaList, setPizzaList] = useState(products);
