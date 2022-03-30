@@ -1,6 +1,6 @@
 import bcrypt from "bcrypt";
 import dbConnect from "../../util/mongo";
-import User from "../../models/User";
+import User from "../../models/user";
 import cookie from "cookie";
 
 export default async function handler(req, res) {
