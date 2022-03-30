@@ -1,7 +1,7 @@
 import Head from "next/head";
 import axios from "axios";
 import Featured from "../components/featured";
-import PizzaList from "../components/pizzaList";
+import PizzaList from "../components/pizzalist";
 import styles from "../styles/Home.module.css";
 
 export default function Home({ pizzaList }) {

@@ -10,7 +10,7 @@ import {
   usePayPalScriptReducer,
 } from "@paypal/react-paypal-js";
 import { reset } from "../redux/cartSlice";
-import OrderDetails from "../components/orderDetails";
+import OrderDetails from "../components/orderdetails";
 
 export default function Cart() {
   const [open, setOpen] = useState(false);
