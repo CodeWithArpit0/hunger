@@ -1,6 +1,6 @@
 import styles from "../styles/PizzaCard.module.css";
-import Image from "next/Image";
-import Link from "next/Link";
+import Image from "next/image";
+import Link from "next/link";
 
 export default function PizzaCard({ pizza }) {
   return (

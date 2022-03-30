@@ -1,6 +1,6 @@
 import { useRef, useState } from "react";
 import styles from "../styles/Signup.module.css";
-import Link from "next/Link";
+import Link from "next/link";
 import axios from "axios";
 import Router from "next/router";
 import { BsFillEyeFill, BsFillEyeSlashFill } from "react-icons/bs";

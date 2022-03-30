@@ -1,6 +1,6 @@
 import { useState } from "react";
 import styles from "../styles/Featured.module.css";
-import Image from "next/Image";
+import Image from "next/image";
 
 export default function Featured() {
   const [index, setIndex] = useState(0);

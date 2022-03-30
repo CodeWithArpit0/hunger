@@ -1,6 +1,6 @@
 import styles from "../styles/Navbar.module.css";
-import Image from "next/Image";
-import Link from "next/Link";
+import Image from "next/image";
+import Link from "next/link";
 import axios from "axios";
 import { useRef, useState } from "react";
 import { useSelector, useDispatch } from "react-redux";

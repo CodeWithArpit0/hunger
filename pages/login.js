@@ -1,7 +1,7 @@
 import { useState, useRef } from "react";
 import styles from "../styles/Login.module.css";
 import { BsFillEyeFill, BsFillEyeSlashFill } from "react-icons/bs";
-import Link from "next/Link";
+import Link from "next/link";
 import axios from "axios";
 import Router from "next/router";
 import { useDispatch } from "react-redux";

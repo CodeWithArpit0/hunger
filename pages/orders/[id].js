@@ -1,5 +1,5 @@
 import styles from "../../styles/Orders.module.css";
-import Image from "next/Image";
+import Image from "next/image";
 import axios from "axios";
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";

@@ -1,5 +1,5 @@
 import styles from "../styles/Cart.module.css";
-import Image from "next/Image";
+import Image from "next/image";
 import { useDispatch, useSelector } from "react-redux";
 import { useEffect, useState } from "react";
 import { useRouter } from "next/router";
