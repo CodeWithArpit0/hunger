@@ -1,0 +1,240 @@
+.container {
+  background-color: #d1411e;
+  height: 100px;
+  padding: 0px 50px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  position: sticky;
+  top: 0;
+  z-index: 3;
+}
+.item {
+  flex: 1;
+  display: flex;
+  align-items: center;
+}
+
+.item:nth-child(2) {
+  flex: 3;
+  justify-content: center;
+}
+.item:last-child {
+  justify-content: flex-end;
+  /* padding: 0 1em; */
+}
+
+.callButton {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #fff;
+  border-radius: 50%;
+  width: 50px;
+  height: 50px;
+}
+
+.texts {
+  margin-left: 20px;
+  color: #fff;
+}
+
+.text:first-child {
+  font-size: 12px;
+  font-weight: 500;
+}
+
+.text:last-child {
+  font-size: 20px;
+  font-weight: bold;
+}
+
+.list {
+  padding: 0;
+  display: flex;
+  align-items: center;
+  list-style: none;
+  color: #fff;
+}
+
+.listItem {
+  margin: 20px;
+  font-weight: bold;
+  cursor: pointer;
+  position: relative;
+}
+
+.listItem::after {
+  content: "";
+  position: absolute;
+  top: -300%;
+  left: 0;
+  width: 80%;
+  padding: 2px;
+  background-color: #fff;
+  border-radius: 10px;
+  transition: all 0.3s ease-in-out;
+  z-index: -99;
+}
+.listItem:hover.listItem::after {
+  top: 100%;
+}
+
+.cart {
+  position: relative;
+  cursor: pointer;
+  width: 25px;
+  height: 25px;
+}
+
+.counter {
+  position: absolute;
+  top: -8px;
+  right: -9px;
+  width: 16px;
+  height: 16px;
+  font-size: 13px;
+  background: #fff;
+  border-radius: 50%;
+  padding: 3px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #d1411e;
+  font-weight: bold;
+}
+
+.button {
+  border: none;
+  outline: none;
+  padding: 6px 10px;
+  border-radius: 2px;
+  background-color: #fff;
+  font-weight: bold;
+  cursor: pointer;
+  color: #d1411e;
+  transition: all 0.2s ease-in-out;
+}
+.button:hover {
+  background-color: #bb3a19;
+  color: #fff;
+}
+.button:first-child {
+  margin-right: 20px;
+}
+
+.UserDet {
+  display: flex;
+  align-items: center;
+}
+.userName {
+  display: flex;
+  align-items: center;
+  margin-right: 10px;
+}
+
+.avatar {
+  margin-right: 5px;
+  display: flex;
+  align-items: center;
+  width: 40px;
+  height: 40px;
+}
+
+.username {
+  color: white;
+  font-weight: 500;
+  margin-left: 8px;
+}
+
+.dropDownBtn {
+  padding: 0;
+  border: none;
+  outline: none;
+  color: #fff;
+  background: transparent;
+  margin-left: 4px;
+  margin-top: 4px;
+  cursor: pointer;
+}
+
+.dropDownArrow {
+  transition: all 0.2s ease-in-out;
+  font-size: 20px;
+}
+
+.dropDown {
+  position: absolute;
+  top: 80px;
+  right: 70px;
+  background-color: #fff;
+  border-radius: 4px;
+  box-shadow: rgba(50, 50, 93, 0.25) 0px 50px 100px -20px,
+    rgba(0, 0, 0, 0.3) 0px 30px 60px -30px;
+}
+
+.dropDownItem {
+  font-weight: 500;
+  padding: 6px 25px;
+  margin: 4px 8px;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: all 0.2s ease-in-out;
+}
+
+.dropDownItem:hover {
+  background-color: rgb(230, 230, 230);
+}
+
+@media (max-width: 650px) {
+  .container {
+    padding: 0 10px;
+  }
+  .callButton {
+    display: none;
+  }
+  .texts {
+    width: 100%;
+    margin: 0;
+  }
+  .text:first-child {
+    font-size: 12px;
+    font-weight: 500;
+  }
+
+  .text:last-child {
+    font-size: 13px;
+    font-weight: bold;
+  }
+  .item:nth-child(2) {
+    flex: 1;
+  }
+  .list li {
+    display: none;
+  }
+  .button {
+    padding: 0;
+    background-color: transparent;
+    color: #fff;
+  }
+  .button:first-child {
+    margin-right: 6px;
+  }
+  .userPizzaImage {
+    width: 60px;
+    height: 60px;
+  }
+  .avatar,
+  .username {
+    margin: 0;
+  }
+  .cart {
+    width: 25px;
+    height: 25px;
+  }
+  .counter {
+    width: 18px;
+    height: 18px;
+    right: -8px;
+  }
+}

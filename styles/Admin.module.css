@@ -1,0 +1,53 @@
+.container {
+  min-height: calc(100vh - 100px);
+  padding: 50px;
+  display: flex;
+}
+
+.item {
+  flex: 1;
+}
+
+.table {
+  width: 100%;
+  border-spacing: 20px;
+  text-align: left;
+}
+
+.button {
+  border: none;
+  color: White;
+  padding: 5px;
+  cursor: pointer;
+  border-radius: 4px;
+  font-weight: bold;
+  outline: none;
+}
+
+.button:first-child {
+  background-color: #d1411e;
+  margin-right: 10px;
+  padding: 8px 20px;
+}
+
+.button:last-child {
+    background-color: #fff;
+    color: #000;
+    padding: 8px 25px;
+    box-shadow: rgba(0, 0, 0, 0.05) 0px 6px 24px 0px, rgba(0, 0, 0, 0.08) 0px 0px 0px 1px;
+}
+
+.addButton{
+  padding: 10px 22px;
+  background-color: #d1411e;
+  color: #fff;
+  font-weight: bold;
+  border-radius: 4px;
+  outline: none;
+  border: none;
+  transition: all 0.2s ease-in-out;
+}
+
+.addButton:hover{
+  background-color: #a53418;
+}

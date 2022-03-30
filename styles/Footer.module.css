@@ -1,0 +1,94 @@
+.container {
+  height: calc(100vh - 100px);
+  background-color: #d1411e;
+  display: flex;
+}
+
+.footerImage {
+  width: 50%;
+}
+.footerImage {
+  position: relative;
+  display: flex;
+}
+
+.footerMain {
+  display: flex;
+  flex-direction: column;
+}
+
+.detailsContainer {
+  position: relative;
+  display: flex;
+  padding: 60px 30px;
+  justify-content: space-between;
+}
+
+.card {
+  flex: 1;
+  padding: 0 20px;
+}
+
+.title {
+  font-size: 22px;
+  color: #ffcb59;
+}
+
+.text {
+  color: #fff;
+}
+
+.motto {
+  color: #fff;
+}
+
+.footerLogo {
+  position: relative;
+  height: 100%;
+  display: flex;
+  justify-content: stretch;
+  align-items: stretch;
+  padding-left: 50px;
+}
+
+.pizzaLogo {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.brandLogo {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.copyrightContianer {
+  color: #fff;
+  font-weight: 500;
+  text-align: center;
+  background-color: #d1411e;
+}
+
+@media (max-width: 650px) {
+  .footerImage {
+    display: none;
+  }
+  .detailsContainer {
+    flex-direction: column;
+  }
+  .footerLogo {
+    /* flex-direction: column; */
+    justify-content: center;
+    align-items: center;
+    padding: 0;
+  }
+  .pizzaLogo {
+    width: 120px;
+    height: 120px;
+  }
+  .brandLogo {
+    width: 200px;
+    height: 100px;
+  }
+}

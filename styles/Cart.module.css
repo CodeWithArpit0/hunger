@@ -1,0 +1,117 @@
+.container {
+  min-height: calc(100vh - 100px);
+  padding: 50px;
+  display: flex;
+}
+
+.left {
+  flex: 2;
+}
+
+.right {
+  flex: 1;
+}
+.imgContainer {
+  width: 100px;
+  height: 100px;
+  position: relative;
+}
+
+.table {
+  width: 100%;
+  border-collapse: collapse;
+  /* border-spacing: 20px; */
+}
+
+.tableHeader {
+  background-color: #d1421e36;
+  color: #d1411e;
+}
+
+.table tr td {
+  text-align: center;
+}
+
+.table th {
+  padding: 6px;
+}
+
+.table td {
+  padding: 10px 0;
+}
+
+.name {
+  font-weight: 500;
+  color: #d1411e;
+  font-size: 18px;
+}
+
+.wrapper {
+  /* width: 90%; */
+  margin: 0 20px 0 30px;
+  min-height: 300px;
+  background-color: #333;
+  padding: 40px;
+  /* padding-top: 10px; */
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  color: #fff;
+  border: 1px solid white;
+}
+
+.title {
+  margin: 10px 0;
+}
+.subTotal,
+.discount,
+.grandTotal,
+.tax {
+  /* margin-right: 10px; */
+  display: flex;
+  justify-content: space-between;
+  margin-top: 8px;
+  padding: 0 8px;
+}
+
+.grandTotal {
+  padding: 4px 8px;
+  margin: 20px 0 10px 0;
+  border: 2px dashed white;
+  border-radius: 4px;
+  font-weight: 500;
+  font-size: 18px;
+}
+
+.button {
+  color: #d1411e;
+  font-weight: bold;
+  cursor: pointer;
+  padding: 6px 0;
+  margin-top: 8px;
+}
+
+.paymentMethods {
+  margin-top: 10px;
+  display: flex;
+  flex-direction: column;
+}
+
+.payButton {
+  padding: 10px 5px;
+  font-size: 16px;
+  border-radius: 5px;
+  cursor: pointer;
+  margin-bottom: 5px;
+  background-color: white;
+  color: #d1411e;
+  outline: none;
+  border: none;
+  font-weight: bold;
+}
+
+.payButton:hover{
+  background-color: #d1411e;
+  color: #fff;
+  transition: all 0.2s ease-in-out;
+}

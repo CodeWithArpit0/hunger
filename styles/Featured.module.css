@@ -1,0 +1,43 @@
+.container {
+  height: calc(100vh - 100px);
+  background-color: #d1411e;
+  overflow: hidden;
+}
+
+.arrowContainer {
+  position: absolute;
+  width: 6%;
+  height: 12%;
+  top: 0;
+  bottom: 0;
+  margin: auto;
+  cursor: pointer;
+  z-index: 2;
+}
+.arrowContainer:hover {
+  background-color: rgba(255, 255, 255, 0.1);
+  border-radius: 50%;
+  box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px,
+    rgba(60, 64, 67, 0.15) 0px 1px 3px 1px;
+}
+.wrapper {
+  width: 300vw;
+  height: 100%;
+  display: flex;
+  color: #fff;
+  transition: all 1s ease-in-out;
+}
+.imgContainer {
+  width: 100vw;
+  height: 100%;
+  position: relative;
+}
+
+@media (max-width: 650px) {
+  .container {
+    height: calc(50vh - 100px);
+  }
+  .arrowContainer {
+    margin-top: 14em;
+  }
+}
