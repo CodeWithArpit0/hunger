@@ -9,19 +9,23 @@ import { updateCurrentUser } from "../../redux/userSlice";
 export default function Order({ order }) {
   const dispatch = useDispatch();
   const currentUser = useSelector((state) => state.user.currentUser);
-  useEffect(async () => {
-    try {
-      await axios.put("http://localhost:3000/api/cart", {
-        _id: currentUser._id,
-        cart: [],
-        cartTotal: 0,
-      });
+  useEffect(() => {
+    async function updateCart() {
+      try {
+        await axios.put("http://localhost:3000/api/cart", {
+          _id: currentUser._id,
+          cart: [],
+          cartTotal: 0,
+        });
 
-      dispatch(upateNoOfProducts(0));
-      dispatch(updateCurrentUser(currentUser));
-    } catch (err) {
-      console.log(err);
+        dispatch(upateNoOfProducts(0));
+        dispatch(updateCurrentUser(currentUser));
+      } catch (err) {
+        console.log(err);
+      }
     }
+
+    updateCart();
   });
   const status = 0;
 
