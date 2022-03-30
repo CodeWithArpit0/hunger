@@ -1,8 +1,8 @@
-import Head from 'next/head'
+import Head from "next/head";
 import axios from "axios";
-import Featured from '../components/Featured'
-import PizzaList from '../components/PizzaList'
-import styles from '../styles/Home.module.css'
+import Featured from "../components/featured";
+import PizzaList from "../components/pizzaList";
+import styles from "../styles/Home.module.css";
 
 export default function Home({ pizzaList }) {
   return (
@@ -16,7 +16,7 @@ export default function Home({ pizzaList }) {
       <Featured />
       <PizzaList pizzaList={pizzaList} />
     </div>
-  )
+  );
 }
 
 export const getServerSideProps = async () => {
@@ -24,6 +24,6 @@ export const getServerSideProps = async () => {
   return {
     props: {
       pizzaList: res.data,
-    }
-  }
-}
+    },
+  };
+};

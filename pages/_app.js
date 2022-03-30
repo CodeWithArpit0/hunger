@@ -1,5 +1,5 @@
-import Layout from '../components/Layout';
-import '../styles/globals.css'
+import Layout from "../components/layout";
+import "../styles/globals.css";
 import store from "../redux/store";
 import { Provider } from "react-redux";
 
@@ -9,7 +9,8 @@ function MyApp({ Component, pageProps }) {
       <Layout>
         <Component {...pageProps} />
       </Layout>
-    </Provider>);
+    </Provider>
+  );
 }
 
-export default MyApp
+export default MyApp;
