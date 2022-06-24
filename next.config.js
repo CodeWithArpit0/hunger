@@ -1,8 +1,8 @@
 {
-  swcMinify: false // it should be false by default 
+  swcMinify: false; // it should be false by default
 }
 module.exports = {
   images: {
-    domains: ["res.cloudinary.com"]
-  }
-}
+    domains: ["res.cloudinary.com"],
+  },
+};

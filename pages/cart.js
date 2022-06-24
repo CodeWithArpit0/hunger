@@ -3,6 +3,7 @@ import Image from "next/image";
 import { useDispatch, useSelector } from "react-redux";
 import { useEffect, useState } from "react";
 import { useRouter } from "next/router";
+import ProductCard from "../components/productcard";
 import axios from "axios";
 import {
   PayPalScriptProvider,
@@ -20,6 +21,7 @@ export default function Cart() {
   const dispatch = useDispatch();
 
   const cart = useSelector((state) => state.cart);
+  console.log(cart.total);
   const { isLoggedIn } = useSelector((state) => state.user);
 
   useEffect(() => {
@@ -31,7 +33,7 @@ export default function Cart() {
 
   // useEffect(async () => {
   //   try {
-  //     const res = await axios.post("https://hunger-alpha.vercel.app/api/cart", {
+  //     const res = await axios.post("http://localhost:3000/api/cart", {
   //       _id: currentUser._id,
   //     });
   //     dispatch(initializeCart(res.data));
@@ -42,10 +44,7 @@ export default function Cart() {
 
   const createOrder = async (data) => {
     try {
-      const res = await axios.post(
-        "https://hunger-alpha.vercel.app/api/orders",
-        data
-      );
+      const res = await axios.post("http://localhost:3000/api/orders", data);
       res.status === 201 && router.push("/orders/" + res.data._id);
       dispatch(reset());
     } catch (err) {
@@ -117,23 +116,9 @@ export default function Cart() {
   return (
     <div className={styles.container}>
       <div className={styles.left}>
-        <table className={styles.table}>
-          <thead>
-            <tr className={styles.tableHeader}>
-              <th>Product</th>
-              <th>Product Name</th>
-              <th>Extras</th>
-              <th>Price</th>
-              <th>Quantity</th>
-              <th>Total</th>
-            </tr>
-          </thead>
-          <tbody className={styles.tableBody}>
-            {cart.products.map((product, index) => (
-              <Product product={product} key={index} />
-            ))}
-          </tbody>
-        </table>
+        {cart.products.map((product, index) => (
+          <ProductCard product={product} key={index} />
+        ))}
       </div>
 
       <div className={styles.right}>
@@ -144,6 +129,9 @@ export default function Cart() {
           </div>
           <div className={styles.discount}>
             <b>Discount : </b>${cart.discount}
+          </div>
+          <div className={styles.discount}>
+            <b>Delivery Charges : </b>$1
           </div>
 
           <div className={styles.grandTotal}>
@@ -170,7 +158,10 @@ export default function Cart() {
               </PayPalScriptProvider>
             </div>
           ) : (
-            <button className={styles.button} onClick={() => setOpen(true)}>
+            <button
+              className={styles.checkOutBtn}
+              onClick={() => setOpen(true)}
+            >
               CHECKOUT NOW!
             </button>
           )}

@@ -11,7 +11,7 @@ export default function Login() {
 
   async function handleClick() {
     try {
-      await axios.post("https://hunger-alpha.vercel.app/api/admin_login", {
+      await axios.post("http://localhost:3000/api/admin_login", {
         username,
         password,
       });

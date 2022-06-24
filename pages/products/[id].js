@@ -29,24 +29,29 @@ export default function Product({ pizza }) {
 
   function handleChange(e, option) {
     const checked = e.target.checked;
-
     if (checked) {
       changePrice(option.price);
       setExtras((prev) => [...prev, option]);
     } else {
       changePrice(-option.price);
-      setExtras(extras.filter((extra) => extra._id !== option.id));
+      setExtras(
+        extras.filter((extra) => {
+          return extra._id !== option.id;
+        })
+      );
     }
   }
 
   async function addToCart() {
     if (isLoggedIn) {
       dispatch(addProduct({ ...pizza, extras, price, quantity }));
+
       try {
         const total = price * quantity;
         const cartTotal = cart.total + total;
-
-        await axios.put("https://hunger-alpha.vercel.app/api/cart", {
+        console.log("The cart total is : " + cartTotal);
+        
+        await axios.put("http://localhost:3000/api/cart", {
           product: {
             ...pizza,
             price,
@@ -55,6 +60,7 @@ export default function Product({ pizza }) {
           },
           _id: currentUser._id,
           cartTotal: cartTotal,
+          extras: extras,
         });
       } catch (err) {
         console.log(err);
@@ -76,6 +82,7 @@ export default function Product({ pizza }) {
         <span className={styles.price}>${price}</span>
         <p className={styles.desc}>{pizza.desc}</p>
         <h3 className={styles.choose}>Choose the size</h3>
+
         <div className={styles.sizes}>
           <div className={styles.size} onClick={() => handleSize(0)}>
             <Image src="/images/size.png" layout="fill" alt="" />
@@ -97,12 +104,11 @@ export default function Product({ pizza }) {
             <div className={styles.option} key={option._id}>
               <input
                 type="checkbox"
-                id={option.text}
                 name={option.text}
                 className={styles.checkbox}
                 onChange={(e) => handleChange(e, option)}
               />
-              <label htmlFor={option.text}>{option.text}</label>
+              <label>{option.text}</label>
             </div>
           ))}
         </div>

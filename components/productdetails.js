@@ -29,10 +29,7 @@ export default function ProductDetails({ setIsModelOpen }) {
         img: url,
       };
 
-      await axios.post(
-        "https://hunger-alpha.vercel.app/api/products",
-        newProduct
-      );
+      await axios.post("http://localhost:3000/api/products", newProduct);
       setIsModelOpen(false);
     } catch (err) {
       console.log(err);

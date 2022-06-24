@@ -1,7 +1,6 @@
 import User from "../../models/user";
 import dbConnect from "../../util/mongo";
 import bcrypt from "bcrypt";
-// import jwt from "jsonwebtoken"
 
 export default async function handler(req, res) {
   const { method } = req;
@@ -14,8 +13,8 @@ export default async function handler(req, res) {
       req.body.password = hashedPassword;
 
       const newUser = new User(req.body);
-      const token = await newUser.generateAuthToken();
-      const uss = await newUser.save();
+      await newUser.generateAuthToken();
+      await newUser.save();
 
       res.status(201).json("Registration succesfull");
     } catch (err) {

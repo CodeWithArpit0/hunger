@@ -2,7 +2,6 @@
   height: calc(100vh - 100px);
   display: flex;
 }
-
 .left {
   flex: 1;
   display: flex;
@@ -15,6 +14,14 @@
   flex: 1;
   padding: 20px;
 }
+.price,
+.desc,
+.choose,
+.sizes,
+.ingredients,
+.add {
+  margin-top: 1em;
+}
 
 .imgContainer {
   width: 80%;
@@ -23,18 +30,18 @@
 }
 
 .price {
+  display: block;
   color: #d1411e;
-  font-size: 24px;
+  font-size: 26px;
   font-weight: 400;
-  border-bottom: 1px solid #d1411e;
 }
 
-.desc{
+.desc {
   font-size: 18px;
   width: 70%;
 }
 
-.choose{
+.choose {
   font-size: 20px;
 }
 
@@ -73,7 +80,6 @@
 }
 
 .ingredients {
-  margin-bottom: 30px;
   display: flex;
 }
 
@@ -121,5 +127,4 @@
   font-weight: bold;
   padding: 0 14px;
   border-radius: 4px;
-
 }

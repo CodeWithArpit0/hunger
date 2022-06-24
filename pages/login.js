@@ -37,7 +37,7 @@ export default function Login() {
 
       try {
         const res = await axios.post(
-          "https://hunger-alpha.vercel.app/api/login",
+          "http://localhost:3000/api/login",
           UserDetails
         );
 
