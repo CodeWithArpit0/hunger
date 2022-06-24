@@ -4,21 +4,44 @@ import bcrypt from "bcrypt";
 
 export default async function handler(req, res) {
   const { method } = req;
-  const { password } = req.body;
+  const { password, email } = req.body;
+
   await dbConnect();
 
   if (method === "POST") {
     try {
-      const hashedPassword = await bcrypt.hash(password, 10);
-      req.body.password = hashedPassword;
+      // * Validating the email address
+      const isEmailValid = ValidateEmail(email);
 
-      const newUser = new User(req.body);
-      await newUser.generateAuthToken();
-      await newUser.save();
+      if (isEmailValid) {
+        // * Checking user is not exist with the email
+        const isUserExist = await User.findOne({ email });
+        if (isUserExist) {
+          res.status(401).json("User already exist!");
+        } else {
+          // * Encrypting the password
+          const hashedPassword = await bcrypt.hash(password, 10);
+          req.body.password = hashedPassword;
 
-      res.status(201).json("Registration succesfull");
+          const newUser = new User(req.body);
+          await newUser.generateAuthToken();
+          await newUser.save();
+
+          res.status(400).json("Please enter a valid email address");
+        }
+      } else {
+        res.status(201).json("Registration successfull");
+      }
     } catch (err) {
       res.status(500).json(err);
     }
   }
+}
+
+function ValidateEmail(email) {
+  if (/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(email)) {
+    return true;
+  }
+
+  return false;
 }

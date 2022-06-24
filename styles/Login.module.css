@@ -3,6 +3,8 @@
   display: flex;
   justify-content: center;
   align-items: center;
+  background-image: url(../public/images/layer-bg.png);
+  background-size: contain;
 }
 
 .wrapper {
@@ -11,6 +13,7 @@
   flex-direction: column;
   width: 20em;
   padding: 3em 2em;
+  background-color: #fff;
   border-radius: 4px;
   box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
 }

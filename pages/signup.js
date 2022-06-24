@@ -10,7 +10,10 @@ export default function Signup() {
   // ** System States
   const [togglePassword, setTogglerPassword] = useState(false);
   const [isModelOpen, setIsModelOpen] = useState(false);
-  const [isError, setIsError] = useState(false);
+  const [error, setError] = useState({
+    error: false,
+    msg: "",
+  });
 
   const [User, setUser] = useState({
     fullname: "",
@@ -68,7 +71,7 @@ export default function Signup() {
       emailRef.current.value === "" ||
       passwordInputRef.current.value === ""
     ) {
-      setIsError(true);
+      setError({ error: true, msg: "Please fill all the required fields" });
     } else {
       setIsModelOpen(true);
       try {
@@ -78,7 +81,8 @@ export default function Signup() {
           Router.push("/login");
         }
       } catch (err) {
-        console.log(err);
+        setIsModelOpen(false);
+        setError({ error: true, msg: err.response.data });
       }
     }
   }
@@ -87,7 +91,7 @@ export default function Signup() {
     <div className={styles.container}>
       <div className={styles.wrapper}>
         <h1 className={styles.heading}>Sign Up</h1>
-        <div className={styles.item}>
+        <div className={styles.item} style={{marginTop: 10 + "px"}}>
           <label htmlFor="fullname" className={styles.label}>
             Full Name
           </label>
@@ -121,7 +125,7 @@ export default function Signup() {
           </label>
           <div className={styles.passInput}>
             <input
-              type="text"
+              type="password"
               className={styles.input}
               placeholder="Password"
               id="password"
@@ -130,15 +134,15 @@ export default function Signup() {
               onChange={(e) => handleInput(e)}
             />
             {togglePassword ? (
-              <BsFillEyeSlashFill
-                className={styles.eyeIcon}
-                title="Hide Password"
-                onClick={handlePassword}
-              />
-            ) : (
               <BsFillEyeFill
                 className={styles.eyeIcon}
                 title="Show Password"
+                onClick={handlePassword}
+              />
+            ) : (
+              <BsFillEyeSlashFill
+                className={styles.eyeIcon}
+                title="Hide Password"
                 onClick={handlePassword}
               />
             )}
@@ -194,13 +198,13 @@ export default function Signup() {
           </p>
         </div>
 
-        {isError && (
+        {error.error && (
           <div className={styles.errorBox}>
-            <p className={styles.error}>Please fill all the required fields</p>
+            <p className={styles.error}>{error.msg}</p>
             <ImCross
               className={styles.errorCloseIcon}
               title="Close error"
-              onClick={() => setIsError(false)}
+              onClick={() => setError(false)}
             />
           </div>
         )}
