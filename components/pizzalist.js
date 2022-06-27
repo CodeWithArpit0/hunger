@@ -6,9 +6,9 @@ export default function PizzaList({ pizzaList }) {
     <div className={styles.container}>
       <h1 className={styles.title}>THE BEST PIZZA IN TOWN</h1>
       <p className={styles.desc}>
-        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut blandit arcu
-        in pretium molestie. Interdum et malesuada fames acme. Lorem ipsum dolor
-        sit amet, consetetur adipiscing elit.
+        Order a delicious pizza on the go, anywhere, anytime. Pizza Hut is happy
+        to assist you with your home delivery. Every time you order, you get a
+        hot and fresh pizza delivered at your doorstep in less than
       </p>
       <div className={styles.wrapper}>
         {pizzaList.map((pizza) => (

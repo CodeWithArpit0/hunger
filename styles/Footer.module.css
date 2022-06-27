@@ -1,94 +1,74 @@
-.container {
-  height: calc(100vh - 100px);
+.footer {
+  /* height: 60vh; */
   background-color: #d1411e;
-  display: flex;
-}
-
-.footerImage {
-  width: 50%;
-}
-.footerImage {
-  position: relative;
-  display: flex;
-}
-
-.footerMain {
+  padding: 2em;
   display: flex;
   flex-direction: column;
+  gap: 2em;
 }
-
-.detailsContainer {
-  position: relative;
-  display: flex;
-  padding: 60px 30px;
-  justify-content: space-between;
-}
-
-.card {
-  flex: 1;
-  padding: 0 20px;
-}
-
-.title {
-  font-size: 22px;
-  color: #ffcb59;
-}
-
-.text {
-  color: #fff;
-}
-
-.motto {
-  color: #fff;
-}
-
-.footerLogo {
-  position: relative;
+.footerWrapper {
+  width: 100%;
   height: 100%;
   display: flex;
-  justify-content: stretch;
-  align-items: stretch;
-  padding-left: 50px;
+  gap: 2em;
 }
-
-.pizzaLogo {
+.footerContent {
+  width: 100%;
   display: flex;
-  justify-content: center;
-  align-items: center;
+  justify-content: space-around;
 }
-
 .brandLogo {
   display: flex;
-  justify-content: center;
-  align-items: center;
+  gap: 10px;
 }
-
-.copyrightContianer {
+.pizzaLogo {
+  width: 140px;
+  height: 140px;
+}
+.logo {
+  width: 210px;
+  /* height: 140px; */
+}
+.brandLogoGroup {
+  display: flex;
+  justify-content: flex-start;
+  flex-direction: column;
+}
+.brandLogoGroup h2 {
   color: #fff;
-  font-weight: 500;
-  text-align: center;
-  background-color: #d1411e;
+  font-weight: 400;
 }
-
-@media (max-width: 650px) {
-  .footerImage {
-    display: none;
-  }
-  .detailsContainer {
-    flex-direction: column;
-  }
-  .footerLogo {
-    /* flex-direction: column; */
+.copyright{
+    color: #fff;
+    display:flex;
     justify-content: center;
-    align-items: center;
-    padding: 0;
-  }
-  .pizzaLogo {
-    width: 120px;
-    height: 120px;
-  }
-  .brandLogo {
-    width: 200px;
-    height: 100px;
-  }
+}
+.list{
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  font-weight: 400;
+  margin-top: 1em;
+  color: #fff;
+}
+.list p{
+  cursor: pointer;
+}
+.footerLinks h3,
+.socialMeidaLinks h3 {
+  color: #ffcb59;
+}
+.footerSocialLinks{
+  display:flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 1em;
+}
+.footerSocialLinks .footerSocialIcon{
+  color: #fff;
+  font-size: 1.5em;
+  cursor: pointer;
+}
+.footerSocialLinks .footerSocialIcon:hover{
+  color: #ffcb59;
 }

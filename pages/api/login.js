@@ -33,7 +33,7 @@ export default async function handler(req, res) {
           res.status(401).send("Invalid Password");
         }
       } else {
-        res.status(401).send("User doesn't exist!");
+        res.status(404).send("User doesn't exist!");
       }
     } catch (err) {
       console.log(err);

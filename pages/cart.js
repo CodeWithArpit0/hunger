@@ -1,17 +1,13 @@
 import styles from "../styles/Cart.module.css";
-import Image from "next/image";
 import { useDispatch, useSelector } from "react-redux";
 import { useEffect, useState } from "react";
 import { useRouter } from "next/router";
-import ProductCard from "../components/productcard";
 import axios from "axios";
-import {
-  PayPalScriptProvider,
-  PayPalButtons,
-  usePayPalScriptReducer,
-} from "@paypal/react-paypal-js";
 import { reset } from "../redux/cartSlice";
+import Image from "next/image";
 import OrderDetails from "../components/orderdetails";
+import CartProductList from "../components/Cart/CartProductList";
+import blankCartImg from "../public/images/blank-cart.png";
 
 export default function Cart() {
   const [open, setOpen] = useState(false);
@@ -21,7 +17,6 @@ export default function Cart() {
   const dispatch = useDispatch();
 
   const cart = useSelector((state) => state.cart);
-  console.log(cart.total);
   const { isLoggedIn } = useSelector((state) => state.user);
 
   useEffect(() => {
@@ -29,18 +24,6 @@ export default function Cart() {
       router.push("/login");
     }
   }, [isLoggedIn, router]);
-  // ** const { currentUser } = useSelector((state) => state.user);
-
-  // useEffect(async () => {
-  //   try {
-  //     const res = await axios.post("http://localhost:3000/api/cart", {
-  //       _id: currentUser._id,
-  //     });
-  //     dispatch(initializeCart(res.data));
-  //   } catch (err) {
-  //     console.log(err);
-  //   }
-  // }, []);
 
   const createOrder = async (data) => {
     try {
@@ -52,73 +35,21 @@ export default function Cart() {
     }
   };
 
-  // ** This values are the props in the UI
-  const amount = cart.total;
-  const currency = "USD";
-  const style = { layout: "vertical" };
-  // ** Custom component to wrap the PayPalButtons and handle currency changes
-  const ButtonWrapper = ({ currency, showSpinner }) => {
-    // usePayPalScriptReducer can be use only inside children of PayPalScriptProviders
-    // This is the main reason to wrap the PayPalButtons in a new component
-    const [{ options, isPending }, dispatch] = usePayPalScriptReducer();
-
-    useEffect(() => {
-      dispatch({
-        type: "resetOptions",
-        value: {
-          ...options,
-          currency: currency,
-        },
-      });
-    }, [currency, showSpinner]);
-
-    return (
-      <>
-        {showSpinner && isPending && <div className="spinner" />}
-        <PayPalButtons
-          style={style}
-          disabled={false}
-          forceReRender={[amount, currency, style]}
-          fundingSource={undefined}
-          createOrder={(data, actions) => {
-            return actions.order
-              .create({
-                purchase_units: [
-                  {
-                    amount: {
-                      currency_code: currency,
-                      value: amount,
-                    },
-                  },
-                ],
-              })
-              .then((orderId) => {
-                // Your code here after create the order
-                return orderId;
-              });
-          }}
-          onApprove={function (data, actions) {
-            return actions.order.capture().then(function (details) {
-              const shipping = details.purchase_units[0].shipping;
-              createOrder({
-                customer: shipping.name.full_name,
-                address: "Bhoorapir churaha Hathras",
-                total: cart.total,
-                method: 1,
-              });
-            });
-          }}
-        />
-      </>
-    );
-  };
-
   return (
     <div className={styles.container}>
       <div className={styles.left}>
-        {cart.products.map((product, index) => (
-          <ProductCard product={product} key={index} />
-        ))}
+        {cart.products.length !== 0 ? (
+          <CartProductList products={cart.products} />
+        ) : (
+          <div className={styles.blankCartBox}>
+            <div className={styles.blankWrapper}>
+              <div className={styles.blankCartLogo}>
+                <Image src={blankCartImg} objectFit="cover" />
+              </div>
+              <h1 className={styles.emptyCartHeading}>Your cart is empty!</h1>
+            </div>
+          </div>
+        )}
       </div>
 
       <div className={styles.right}>
@@ -145,17 +76,6 @@ export default function Cart() {
               >
                 Cash On Delivery
               </button>
-              <PayPalScriptProvider
-                options={{
-                  "client-id":
-                    "Adb9gJ_LMdcMwn7nMHu6VRx718UftqbTHfwmej1M3hzZCB2Uh3REUTIKegjDaBLFX08oSKfZ3EttCH-a",
-                  components: "buttons",
-                  currency: "CAD",
-                  "disable-funding": "credit,card,p24",
-                }}
-              >
-                <ButtonWrapper currency={currency} showSpinner={false} />
-              </PayPalScriptProvider>
             </div>
           ) : (
             <button
@@ -169,42 +89,5 @@ export default function Cart() {
       </div>
       {cash && <OrderDetails total={cart.total} createOrder={createOrder} />}
     </div>
-  );
-}
-
-function Product({ product }) {
-  return (
-    <tr className={styles.tableRow}>
-      <td>
-        <div className={styles.imgContainer}>
-          <Image src={product.img} alt="" layout="fill" objectFit="cover" />
-        </div>
-      </td>
-      <td>
-        <span className={styles.name}>{product.title}</span>
-      </td>
-      <td>
-        <span className={styles.extras}>
-          {product.extraOptions.length === 0 ? (
-            <span>-</span>
-          ) : (
-            product.extraOptions.map((extra) => (
-              <span key={extra._id}>{extra.text}, </span>
-            ))
-          )}
-        </span>
-      </td>
-      <td>
-        <span className={styles.price}>${product.price}</span>
-      </td>
-      <td>
-        <span className={styles.quantity}>{product.quantity}</span>
-      </td>
-      <td>
-        <span className={styles.protuctTotal}>
-          ${product.price * product.quantity}
-        </span>
-      </td>
-    </tr>
   );
 }

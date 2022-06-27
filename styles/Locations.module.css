@@ -1,0 +1,54 @@
+.container {
+  height: calc(100vh - 100px);
+  background-color: #d1411e;
+  display: flex;
+  justify-content: space-between;
+}
+.footerImage {
+  width: 32%;
+}
+.footerImage {
+  position: relative;
+  display: flex;
+}
+.footerMain {
+  display: flex;
+  flex-direction: column;
+}
+.detailsContainer {
+  position: relative;
+  display: flex;
+  gap: 2em;
+  padding: 60px 30px;
+  justify-content: space-between;
+}
+.motto {
+  color: #fff;
+  width: 16em;
+}
+.locationCard{
+  width: 30em;
+}
+.locationHeader,
+.locationDetails{
+  display: flex;
+  justify-content: space-between
+}
+.locationHeader h2{
+  color: #ffcb59;
+}
+.locationDetails{
+  margin-top: 2em;
+}
+.locationDetails p{
+  color: #fff;
+}
+
+@media (max-width: 650px) {
+  .footerImage {
+    display: none;
+  }
+  .detailsContainer {
+    flex-direction: column;
+  }
+}

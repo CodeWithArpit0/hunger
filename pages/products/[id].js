@@ -18,7 +18,7 @@ export default function Product({ pizza }) {
   const cart = useSelector((state) => state.cart);
 
   function changePrice(number) {
-    setPrice(price + number);
+    setPrice(price + Math.floor(number));
   }
 
   function handleSize(sizeIndex) {
@@ -49,8 +49,10 @@ export default function Product({ pizza }) {
       try {
         const total = price * quantity;
         const cartTotal = cart.total + total;
+        console.log("Current cart content : ");
+        console.log(cart);
+        console.log("This is Product page adding product to cart!");
         console.log("The cart total is : " + cartTotal);
-        
         await axios.put("http://localhost:3000/api/cart", {
           product: {
             ...pizza,
@@ -79,7 +81,7 @@ export default function Product({ pizza }) {
 
       <div className={styles.right}>
         <h1 className={styles.title}>{pizza.title}</h1>
-        <span className={styles.price}>${price}</span>
+        <span className={styles.price}>Rs. {price}</span>
         <p className={styles.desc}>{pizza.desc}</p>
         <h3 className={styles.choose}>Choose the size</h3>
 

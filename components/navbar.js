@@ -7,6 +7,14 @@ import { useSelector, useDispatch } from "react-redux";
 import { reset } from "../redux/userSlice";
 import { IoIosArrowDown } from "react-icons/io";
 import Router from "next/router";
+import {
+  AiOutlineUser,
+  MdDeliveryDining,
+  BiPowerOff,
+  IoFastFoodOutline,
+  MdOutlineLocalActivity,
+  AiOutlineHeart
+} from "../pages/icons";
 
 export default function Navbar() {
   const dispatch = useDispatch();
@@ -127,9 +135,54 @@ export default function Navbar() {
               </button>
               {isDropDownOpen && (
                 <div className={styles.dropDown}>
-                  <Link href="/profile" passHref>
-                    <div className={styles.dropDownItem} title="Profile">
+                  <Link href="/user/profile" passHref>
+                    <div
+                      className={styles.dropDownItem}
+                      title="Profile"
+                      onClick={() => showDropDown(false)}
+                    >
+                      <AiOutlineUser className={styles.dropDownIcon} />
                       Profile
+                    </div>
+                  </Link>
+                  <Link href="/user/orders" passHref>
+                    <div
+                      className={styles.dropDownItem}
+                      title="Orders"
+                      onClick={() => showDropDown(false)}
+                    >
+                      <MdDeliveryDining className={styles.dropDownIcon} />
+                      My Orders
+                    </div>
+                  </Link>
+                  <Link href="/user/favorite-foods" passHref>
+                    <div
+                      className={styles.dropDownItem}
+                      title="Favorite Foods"
+                      onClick={() => showDropDown(false)}
+                    >
+                      <IoFastFoodOutline className={styles.dropDownIcon} />
+                      Favorite Foods
+                    </div>
+                  </Link>
+                  <Link href="/user/favorite-orders" passHref>
+                    <div
+                      className={styles.dropDownItem}
+                      title="Favorite Orders"
+                      onClick={() => showDropDown(false)}
+                    >
+                      <AiOutlineHeart className={styles.dropDownIcon} />
+                      Favorite Orders
+                    </div>
+                  </Link>
+                  <Link href="/user/activity" passHref>
+                    <div
+                      className={styles.dropDownItem}
+                      title="Activities"
+                      onClick={() => showDropDown(false)}
+                    >
+                      <MdOutlineLocalActivity className={styles.dropDownIcon} />
+                      My Activity
                     </div>
                   </Link>
                   <div
@@ -137,6 +190,7 @@ export default function Navbar() {
                     title="Logout"
                     onClick={handleLogout}
                   >
+                    <BiPowerOff className={styles.dropDownIcon} />
                     Logout
                   </div>
                 </div>

@@ -1,3 +1,85 @@
 .container {
   min-height: calc(100vh - 100px);
+  background-image: url(../public/images/layer-bg.png);
+  background-size: cover;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.profileWrapper,
+.profileWrapper * {
+  /* border: 1px solid black; */
+}
+.profileWrapper {
+  width: 80%;
+  height: calc(100vh - 100px);
+}
+.profileHeader {
+  border-radius: 8px;
+  height: 220px;
+  margin-top: 1em;
+  display: flex;
+  background: linear-gradient(
+        rgba(0, 0, 0, 0.13) 22.25%,
+        rgba(0, 0, 0, 0.5) 55.5%
+      )
+      center center / cover no-repeat,
+    url(https://b.zmtcdn.com/data/cover_images/f2d3bc8a1e014f087487d77ab14fa9161548143122.jpeg?output-format=webp);
+  background-position: center center;
+  background-repeat: no-repeat;
+}
+.userDetailsContainer{
+  width: 100%;
+  display:flex;
+  justify-content: space-between;
+  padding-right: 1em;
+  backdrop-filter: blur(4px);  
+
+}
+.userMain{
+  height: 100%;
+  padding: 24px 16px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 1.5em;
+  color: #fff;
+}
+.avatar{
+  width: 166px;
+  height: 100%;
+  height: 100%;
+  overflow: hidden;
+  border-radius: 50%;
+  background-image: url(../public/images/avatar.png);
+  background-position: center center;
+  background-repeat: no-repeat;
+}
+.userDetails{
+  display: flex;
+  justify-content: center;
+  align-items: flex-end;
+  flex-direction: column;
+  gap: 1em;
+}
+.editProfileBtn button{
+  padding: 10px 1.4em;
+  border-radius: 6px;
+  background-color: #d1411e;
+  color: #fff;
+  letter-spacing: 1px;
+  cursor: pointer;
+}
+.userFav{
+  display: flex;
+  gap: 1em;
+}
+.userFav button{
+  font-size: 15px;
+  background: transparent;
+  color: #ffff;
+}
+.userFav button h1{
+  font-size: 26px;
+  font-weight: 500;
 }

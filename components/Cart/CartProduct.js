@@ -1,27 +1,29 @@
 import Image from "next/image";
 import axios from "axios";
-import styles from "../styles/ProductCard.module.css";
+import styles from "../../styles/ProductCard.module.css";
 import { useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
-import { updateCart } from "../redux/cartSlice";
+import { updateCart } from "../../redux/cartSlice";
 
 export default function ProductCard({ product }) {
   const dispatch = useDispatch();
-  const cart = useSelector((state) => state.cart);
+  const [cart, setCart] = useState(useSelector((state) => state.cart));
+
   const CurrentUser = useSelector((state) => state.user.currentUser);
-  const [DeletingProductTotal, setDeletingProdutctTotal] = useState(null);
 
   // ** Function to delete the product from cart
   async function deleteProduct(ProductID) {
-    const UpdatedCart = cart.products.filter((product) => {
+    let updatedCart = {};
+    updatedCart.products = cart.products.filter((product) => {
       if (product._id === ProductID) {
-        setDeletingProdutctTotal(product.total);
+        updatedCart.deletingProductPrice = product.price;
         return false;
       }
       return true;
     });
 
-    dispatch(updateCart({ UpdatedCart, DeletingProductTotal }));
+    setCart({ ...cart, products: updatedCart.products });
+    dispatch(updateCart({ updatedCart }));
 
     const userID = CurrentUser._id;
     const res = await axios.post("http://localhost:3000/api/cart", {

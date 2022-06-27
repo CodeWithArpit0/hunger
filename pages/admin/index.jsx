@@ -1,8 +1,10 @@
 import { useState } from "react";
 import styles from "../../styles/Admin.module.css";
-import Image from "next/image";
 import axios from "axios";
 import ProductDetails from "../../components/productdetails";
+import ProductRow from "../../components/Admin/ProductRow";
+import OrderRow from "../../components/Admin/OrderRow";
+import BlankList from "../../components/Admin/blankList";
 
 export default function Admin({ orders, products }) {
   const [pizzaList, setPizzaList] = useState(products);
@@ -28,6 +30,7 @@ export default function Admin({ orders, products }) {
         "http://localhost:3000/api/orders/" + orderID,
         { status: currentStatus + 1 }
       );
+
       setOrderList([
         res.data,
         ...orderList.filter((order) => order._id !== orderID),
@@ -42,49 +45,10 @@ export default function Admin({ orders, products }) {
       <div className={styles.item}>
         <h1 className={styles.title}>Products</h1>
 
-        {pizzaList ? (
-          <table className={styles.table}>
-            <thead>
-              <tr>
-                <th>Product</th>
-                <th>ID</th>
-                <th>Title</th>
-                <th>Price</th>
-                <th>Action</th>
-              </tr>
-            </thead>
-            <tbody>
-              {pizzaList.map((product) => (
-                <tr className={styles.trTitle} key={product._id}>
-                  <td>
-                    <Image
-                      src={product.img}
-                      width={60}
-                      height={60}
-                      objectFit="cover"
-                      alt=""
-                    />
-                  </td>
-                  <td>{product._id.slice(0, 5)}...</td>
-                  <td>{product.title}</td>
-                  <td>${product.prices[0]}</td>
-                  <td>
-                    <button className={styles.button}>Edit</button>
-                    <button
-                      className={styles.button}
-                      onClick={() => deleteProduct(product._id)}
-                    >
-                      Delete
-                    </button>
-                  </td>
-                </tr>
-              ))}
-            </tbody>
-          </table>
+        {pizzaList !== 0 ? (
+          <ProductRow pizzaList={pizzaList} deleteProduct={deleteProduct}/>
         ) : (
-          <h2 style={{ color: "#bababa" }}>
-            No products avaliable at this moment!
-          </h2>
+          <BlankList/>
         )}
         <div>
           <button
@@ -99,49 +63,10 @@ export default function Admin({ orders, products }) {
 
       <div className={styles.item}>
         <h1 className={styles.title}>Orders</h1>
-
-        {orderList ? (
-          <table className={styles.table}>
-            <thead>
-              <tr>
-                <th>Order ID</th>
-                <th>Customer Name</th>
-                <th>Total</th>
-                <th>Payment</th>
-                <th>Status</th>
-                <th>Action</th>
-              </tr>
-            </thead>
-            <tbody>
-              {orderList.map((order) => (
-                <tr key={order._id}>
-                  <td>{order._id.slice(0, 5)}...</td>
-                  <td>{order.customer_name}</td>
-                  <td>${order.total}</td>
-                  <td>
-                    {order.method === 0 ? (
-                      <span>Cash</span>
-                    ) : (
-                      <span>Paid on Paypal</span>
-                    )}
-                  </td>
-                  <td>{status[order.status]}</td>
-                  <td>
-                    <button
-                      className={styles.button}
-                      onClick={() => handleStatus(order._id)}
-                    >
-                      Next Stage
-                    </button>
-                  </td>
-                </tr>
-              ))}
-            </tbody>
-          </table>
+        {orderList.length !== 0 ? (
+          <OrderRow orderList={orderList} />
         ) : (
-          <h2 style={{ color: "#bababa" }}>
-            No orders avaliable at this moment!
-          </h2>
+          <BlankList/>
         )}
       </div>
     </div>

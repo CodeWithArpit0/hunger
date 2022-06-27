@@ -3,7 +3,6 @@
   padding: 50px;
   display: flex;
 }
-
 .left {
   flex: 2;
 }
@@ -124,4 +123,22 @@
 }
 .payButton:hover.payButton::before {
   transform: scaleX(1.04);
+}
+.blankCartBox,
+.blankWrapper {
+  height: 100%;
+}
+.blankWrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+.blankCartLogo {
+  width: 15em;
+  height: 15em;
+}
+.emptyCartHeading {
+  color: rgb(228, 228, 228);
+  font-weight: 500;
 }

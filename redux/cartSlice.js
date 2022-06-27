@@ -20,13 +20,9 @@ const cartSlice = createSlice({
       state.products = action.payload;
     },
     updateCart: (state, action) => {
-      state.products = action.payload.UpdatedCart;
+      state.products = action.payload.updatedCart.products;
       state.noOfProducts -= 1;
-      console.log("Delete product total ");
-      console.log(action.payload.DeletingProductTotal);
-      console.log("Total before : " + state.total);
-      state.total -= action.payload.DeletingProductTotal;
-      console.log("Total after : " + state.total);
+      state.total -= action.payload.updatedCart.deletingProductPrice;
     },
     updateCartCount: (state, action) => {
       state.noOfProducts = action.payload.noOfProducts;

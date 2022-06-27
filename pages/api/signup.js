@@ -12,7 +12,6 @@ export default async function handler(req, res) {
     try {
       // * Validating the email address
       const isEmailValid = ValidateEmail(email);
-
       if (isEmailValid) {
         // * Checking user is not exist with the email
         const isUserExist = await User.findOne({ email });
@@ -27,10 +26,10 @@ export default async function handler(req, res) {
           await newUser.generateAuthToken();
           await newUser.save();
 
-          res.status(400).json("Please enter a valid email address");
+          res.status(201).json("Registration successfull");
         }
       } else {
-        res.status(201).json("Registration successfull");
+        res.status(400).json("Please enter a valid email address");
       }
     } catch (err) {
       res.status(500).json(err);

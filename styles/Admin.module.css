@@ -3,14 +3,13 @@
   padding: 50px;
   display: flex;
 }
-
 .item {
   flex: 1;
 }
 
 .table {
   width: 100%;
-  border-spacing: 20px;
+  border-spacing: 15px;
   text-align: left;
 }
 
@@ -50,4 +49,21 @@
 
 .addButton:hover{
   background-color: #a53418;
+}
+.blankHeading{
+  color: rgb(200,200,200);;
+}
+.noOrderContainer,
+.blankWrapper{
+  display: flex;
+  justify-content: center;
+}
+.blankWrapper{
+  align-items: center;
+  flex-direction: column;
+  margin-top: 7em;
+}
+.blankImgBox{
+  width: 12em;
+  height: 12em;
 }

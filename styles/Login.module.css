@@ -101,6 +101,7 @@
 .para {
   margin: 0;
   font-size: 13px;
+
 }
 .para:last-child {
   margin-left: 8px;
@@ -126,9 +127,11 @@
 }
 .loginRedirect {
   font-size: 13px;
+  margin-top: 12px;
 }
 
 .errorBox {
+  margin-top: 12px;
   display: flex;
   justify-content: space-between;
   align-items: center;
